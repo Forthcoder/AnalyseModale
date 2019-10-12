@@ -1,0 +1,136 @@
+\documentclass[10pt,a4paper, french]{article}
+%\usepackage{a4wide}
+%====================================================================
+%  						Liste des Packages
+%====================================================================
+%--- Packages pour l'écriture ---------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{setspace}
+%--- Package pour l'insertion de figure -----------------------------
+\usepackage{graphicx}
+\usepackage[lofdepth,lotdepth]{subfig}
+\usepackage{booktabs}
+%--- Package pour la création de circuits électronique --------------
+\usepackage{tikz}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\newcommand{\speaker}[2] % #1 = name from to[generic,n=#1], #2 = rotation angle
+{\draw[thick,rotate=#2] (#1) +(.2,.25) -- +(.7,.75) -- +(.7,-.75) -- +(.2,-.25);}
+%--- Package pour référencer proprement -----------------------------
+\usepackage{float}
+\usepackage{url}
+\usepackage{lipsum}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{varioref}
+%--- Package pour toutes les unités en physique ---------------------
+\usepackage[scientific-notation=true]{siunitx}
+%---Tous les Packages qu'il faut pour les maths----------------------
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{calrsfs}
+\usepackage{mathrsfs}
+%--- Configuration des packages -------------------------------------
+\geometry{a4paper, total={170mm,257mm}, left=20mm, top=20mm}
+\captionsetup[figure]{labelfont=sc} % Ignorer les Warnings ;)
+\captionsetup[table]{name=Tableau}
+\captionsetup[table]{labelfont=sc} % Ignorer les Warnings ;)
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+%--- Place les Figures en début de page lorsqu'il n'y pas de texte --
+\makeatletter
+\renewcommand\fps@figure{!htb}
+\setlength\@fptop{0pt}
+\makeatother
+\renewcommand{\floatpagefraction}{.6}% before: .5
+\renewcommand{\textfraction}{.15} % before: .2
+\renewcommand{\topfraction}{.8}     % before: .7
+\renewcommand{\bottomfraction}{.5}  % before: .3
+\setcounter{topnumber}{3} % before: 2
+\setcounter{bottomnumber}{1} % before: 1
+\setcounter{totalnumber}{5} % before: 3
+
+ \begin{document}
+%====================================================================
+%  							Page de garde
+%====================================================================
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Figures/logo.jpg}\par\vspace{1cm}
+
+	\vspace{2cm}
+	{\scshape\LARGE Vibration à N degré de liberté \par}
+    \vspace{.5cm}
+	\HRule \\[0.7cm]
+	{\huge \bfseries T.P. n\si{\degree} : }\\[0.4cm]
+	\HRule \\[1.5cm]
+	\vspace{1.3cm}
+	Auteur:\par
+	{\large Maxime \textsc{Glomot}  \par
+  \large Barnabé \textsc{}}
+	\vspace{.4cm}
+
+	Encadrant:\par
+	{\large \textsc{Ablitzer} Fréderic} \\
+	\vfill
+
+	\begin{figure}[h]
+        \centering
+        \includegraphics[width = 8cm]{Figures/PendulePohl.jpg}
+        \caption{Pendule de Pohl}
+        %\label{Figure 1}
+        \end{figure}
+	{\large \today \par}
+    Semestre 5 \\
+\end{titlepage}
+
+%====================================================================
+%   					    Sommaire
+%====================================================================
+\newpage
+%--- Sommaire -------------------------------------------------------
+\begin{center}
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents
+\end{center}
+%--- Liste des Figures ----------------------------------------------
+\renewcommand*\listfigurename{Liste des Figures}
+\listoffigures
+%--- Liste des Tableaux ---------------------------------------------
+%\renewcommand*\listtablename{Liste des Tableaux}
+%\listoftables
+%--- Bibliographie --------------------------------------------------
+%\begin{thebibliography}{9}
+%\bibitem{référenceItem}
+%Auteur(s).
+%\textit{Titre}.
+%Édition, date de parution.
+%\end{thebibliography}
+
+%====================================================================
+%   					Travail Pratique %====================================================================
+\newpage
+
+
+%\include{Sections/3-Annexe}
+
+%====================================================================
+
+
+\section{Chapître 1 : Vibrations libres et forcées d'une poutre encastrée libre}
+
+\subsection{Introduction}
+\subsection{Etude du système en régime libre}
+\subsubsection{Excitation par changement de la position d'équilibre}
+\subsubsection{Excitation impulsionnelle}
+\subsection{Etude du système en régime forcé}
+\subsection{Conclusion}
+
+
+
+\end{document}
