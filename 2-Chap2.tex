@@ -4,15 +4,181 @@
 \section{Chapître 2 : Oscillations libres et forcées d'un système à un ou deux degrés de liberté}
 
 \subsection{Introduction}
+Ce travail pratique a pour object l'étude un système à 1 ou 2 degrés de libertés en flexion illustré par la figure \ref{fig:montage}. Nous étudierons la réponse du système à une excitation impulsionnelle, effectué à l'aide d'un marteau d'impact.
 
-Dans ce
+\begin{figure}
+    \centering
+    \includegraphics[width=200]{Sections/schema_montage.PNG}
+    \caption{Schéma du système}
+    \label{fig:montage}
+\end{figure}
+
+
 \subsection{Système à 1 degré de liberté}
+
+Le système est composé de deux sous-système masse-ressort à 1 degré de liberté, chacun composé d'une masse montée sur deux plaques en flexions parallèles et supposées respectivement identiques. Dans un premier temps, chaque sous-système est isolé. Pour chaque oscillateur, un accéléromètre est collé sur la face gauche de la masse et l'excitation est effectuée sur la face droite. 
+
 \subsubsection{Analyse temporelle}
-\subsection{Analyse fréquentielle}
+
+L'objectif de cette partie est de déterminer les 2 caractéristiques de chaque oscillateur masse-ressort : \begin{itemize}
+    \item $k_1,k_2$, les raideurs des ressorts
+    \item $c_1,c_2$, les coefficients d'amortissement
+\end{itemize}
+\\
+L'acquisition des données est réalisée à l'aide du logiciel \textit{Analyseur CTTM} relié à la chaîne de mesure via une \textit{Carte NI}.
+\\
+Les masses sont pesées avec les lames, dont la masse de ces dernières sont considérées comme non-négligeable : $m_1=419.10^{-3}\pm0,5.10^{-3}kg$ et $m_2=395.10^{-3}\pm0,5.10^{-3}kg$.
+\\
+Les figures \ref{fig:graph temp 1} et \ref{fig:graph temp 2} illustrent les résultat de cette première série de mesures.
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Réponse impulsionelle du système 1 dans le domaine temporel}
+    \label{fig:graph temp 1}
+\end{figure}{}
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Réponse impulsionelle du système 2 dans le domaine temporel}
+    \label{fig:graph temp 2}
+\end{figure}{}
+
+L'allure des courbes expérimentales identique que le système est en régime pseudo-périodique, l'amortissement est donc considéré comme faible. 
+Sous l'hypothèse d'amortissement faible, le signal $s(t)$ peut s'écrire sous la forme: \begin{equation}
+    s(t)=Ae^{-\zeta\omega_0t}\cos(\omega_dt+\phi)=Ae^{-\delta t}\cos(\omega_dt+\phi)
+\end{equation}
+Avec $\zeta=\frac{c}{2m\omega_0}$ le taux d'amortissement, $\omega_d=\omega_0\sqrt{1-\zeta^2}$ la pseudo-pulsation et $\omega_0=\sqrt{\frac{k}{m}}$ la pulsation propre du système.
+La méthode du décrément logarithmique consiste à effectuer le rapport entre deux maxima ($\cos(\omega_dt+\phi)=1$)afin de calculer le coefficent $\delta$: \begin{equation*}
+    \frac{s(t_1)}{s(t_2)}=\frac{A_1}{A_2}=\frac{Ae^{-\delta t_1}}{Ae^{-\delta t_2}}=e^{\delta(t_2-t_1)}
+\end{equation*}
+\begin{equation*}
+    \Rightarrow~\ln{\frac{A_1}{A_2}}=\delta T_d~\Rightarrow~\delta=\frac{1}{T_d}\ln{\frac{A_1}{A_2}} 
+\end{equation*}
+La pseudo-période $T_d$ ainsi que les amplitudes $A_1$ et $A_2$ sont mesurées, $\delta$ est donc déterminé expérimentalement, ce qui permet d'accéder au coefficient d'amortissement $c$:
+\begin{equation*}
+    \delta=\zeta\omega_0=\frac{c}{2m}~\Rightarrow~c=\frac{2m}{\delta}
+\end{equation*}
+D'autre part, connaissant la pseudo période $T_d$ et le décrément logarithmique $\delta$, il est également possible d'accéder à $\omega_0$ puis à la raideur $k$:
+\begin{equation*}
+    \omega_d=\sqrt{1-\left(\frac{\delta}{\omega_0}\right)^2}=\sqrt{\omega_0^2-\delta^2}~\Rightarrow~\omega_0=\sqrt{\left(\frac{2\pi}{T_d}\right)^2+\delta^2}
+\end{equation*}
+\begin{equation*}
+    \Rightarrow~k=m\omega_0^2
+\end{equation*}
+\underline{Métrologie} :
+Les incertitudes liées aux calculs des différentes caractéristiques de l'oscillateur sont les suivantes :
+\begin{equation*}
+    \frac{\Delta\delta}{\delta}=\sqrt{\left(\frac{\Delta T_d}{T_d}\right)^2+\left(\frac{\ln{\Delta A_1}}{\ln{A_1}}\right)^2+\left(\frac{\ln{\Delta A_2}}{\ln{A_2}}\right)^2}=
+\end{equation*}
+\begin{equation*}
+    \frac{\Delta c}{c}=\sqrt{\left(\frac{\Delta m}{m}\right)^2+\left(\frac{\Delta\delta}{\delta}\right)^2}=
+\end{equation*}
+\begin{equation*}
+    \frac{\Delta\omega_0}{\omega_0}=\sqrt{\left(\frac{\Delta T_d}{T_d}\right)^2+\left(\frac{\Delta\delta}{\delta}\right)^2}=
+\end{equation*}
+\begin{equation*}
+    \frac{\Delta k}{k}=\sqrt{\left(\frac{\Delta m}{m}\right)^2+\left(\frac{\Delta\omega_0}{\omega_0}\right)^4}=
+\end{equation*}
+\underline{Applications Numériques} :
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Système 1 & Système 2 \\
+        \hline    
+        $T_{d1}= \pm$ & $T_{d2}= \pm$ \\
+        \hline
+        $\omega_d_1= \pm$ & $\omega_d_2= \pm$ \\
+        \hline
+        $\omega_0_1= \pm$ & $\omega_0_2= \pm$ \\
+        \hline
+        $c_1= \pm$ & $c_2= \pm$ \\
+        \hline
+        $k_1= \pm$ & $k_2= \pm$ \\
+        \hline
+    \end{tabular}
+    \caption{Caractéristiques expérimentales des deux oscillateurs}
+    \label{tab:resultats}
+\end{table}{}
+
+COMMENTAIRE COMPARAISON PULSATIONS PROPRES/PSEUDO PULSATIONS
+
+\subsubsection{Analyse fréquentielle}
+Dans cette partie, le comportement du système à 1 degré de liberté va être observé dans le domaine spectral.
+La FRF (\textit{Fast Fourier Transform}) du signal mesuré est d'abord calculé avec une seule moyenne est d'abord effectuée, puis avec 5 moyennes, puis avec 10 moyennes, pour un temps d'acquisition de $t_max=1s$.
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{FRF du système ... 1 moyenne}
+    \label{fig:FRF_s..._1moy}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{FRF du système ... 5 moyenne}
+    \label{fig:FRF_s..._1moy}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{FRF du système ... 10 moyenne}
+    \label{fig:FRF_s..._1moy}
+\end{figure}
+
+COMMENTAIRE
+
+Ensuite, en variant le pas fréquentiel, la durée d'acquisition varie de $t_{max}=0,2s$ à $t_{max}=5s$.
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{FRF du système ... 0,2s d'acquisition}
+    \label{fig:FRF_s..._0,2s}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{FRF du système ... 0,5s d'acquisition}
+    \label{fig:FRF_s..._0,5s}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{FRF du système ... 1s d'acquisition}
+    \label{fig:FRF_s..._1s}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{FRF du système ... 5s d'acquisition}
+    \label{fig:FRF_s..._5s}
+\end{figure}
+
+COMMENTAIRE
+\newpage
+\subsection{Système à 2 degrés de liberté}
+Maintenant que les deux oscillateurs à 1 degrés de libertés ont été caractérisés. Les deux systèmes sont couplés pour former un système à 2 degrés de liberté. Pour les mesures, un accéléromètre est placés sur chaque face gauche des masses. L'excitation se fait toujours à l'aide du même marteau d'impact.
+
+\subsubsection{Analyse Temporelle}
+
+Dans la même démarche que précédemment, l'objectif est de caractériser l'oscillateur. 
+La figure \ref{fig:rep temps 1+2} illustre le résultat de la mesure, l'excitation a été effectuée sur la masse supérieure.
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Réponse impulsionelle du système 1+2 dans le domaine temporel}
+    \label{fig:rep temps 1+2}
+\end{figure}
+
+COMMENTAIRE
+Les deux 
+
+\subsubsection{Analyse Fréquentielle}
+
 \subsection{Conclusion}
 
 
-
-
-
-\end{document}
